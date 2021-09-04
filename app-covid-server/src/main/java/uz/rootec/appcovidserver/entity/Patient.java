@@ -19,6 +19,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @Entity
 public class Patient extends AbstractEntity {
+    private String serial;
     private String birthDate;
     private String address;
     private String fullName;

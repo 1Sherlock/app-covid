@@ -30,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         if (initialMode.equals("always")) {
-            User user = new User("+998934366331", passwordEncoder.encode("root123"), "Muxammatov", "Nizom", roleRepository.findAll());
+            User user = new User("dwj#03KDO'oOq", passwordEncoder.encode("fjewiDW3(#dwkaoDK3(#*"), "admin", "admin", roleRepository.findAll());
             userRepository.save(user);
         }
     }
