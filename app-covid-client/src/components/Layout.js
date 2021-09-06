@@ -11,7 +11,7 @@ const Layout = (props) => {
         <div id="forDashboard">
             <div className="border-bottom">
                 <nav className="navbar navbar-expand-md container navbar-light my-2">
-                    <Link to="/dashboard" className="navbar-brand font-weight-bold text-primary">Covid-19</Link>
+                    <Link to={{ pathname: "/dashboard", state: { nizom: "nizom" } }} target="_blank" className="navbar-brand font-weight-bold text-primary">Covid-19</Link>
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item nav-item-dropdown">

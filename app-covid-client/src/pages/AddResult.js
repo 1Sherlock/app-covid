@@ -219,7 +219,7 @@ const AddResult = (props) => {
                                 <label htmlFor="lab-name"> Лаборатория (название) <span
                                     className="text-danger"> * </span></label>
                                 <select id="lab-name" name="laboratory" className="form-control shadow-none" required defaultValue={props.location.state ? props.location.state.item.laboratory.id: ""}>
-                                    <option>-- Выберите --</option>
+                                    {/*<option>-- Выберите --</option>*/}
                                     {props.labos.map(item => (
                                         <option
                                             value={item.id}>{item.nameRu}
@@ -231,7 +231,7 @@ const AddResult = (props) => {
                             <div className="form-group">
                                 <label htmlFor="loc"> Место забора анализа  <span className="text-danger"> * </span></label>
                                 <select id="loc" name="place" className="form-control shadow-none" required defaultValue={props.location.state ? props.location.state.item.place.id: ""}>
-                                    <option>-- Выберите --</option>
+                                    {/*<option>-- Выберите --</option>*/}
                                     {props.locations.map(item => (
                                         <option
                                             value={item.id}>{item.nameRu}
@@ -255,7 +255,7 @@ const AddResult = (props) => {
                                 <label htmlFor="data-analise">Дата сдачи анализа  <span
                                     className="text-danger"> * </span></label>
                                 <input id="data-analise" type="text" className="form-control shadow-none"
-                                       placeholder="Дата сдачи анализа  " required name="analiseDate" defaultValue={props.location.state ? props.location.state.item.analiseDate: ""}/>
+                                       placeholder="Дата сдачи анализа  " required name="analiseDate" defaultValue={props.location.state ? props.location.state.item.analiseDate.split(" ")[0]: ""}/>
                             </div>
                         </div>
                     </div>

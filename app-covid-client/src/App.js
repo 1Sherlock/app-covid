@@ -8,6 +8,7 @@ import AddLab from "./pages/AddLab";
 import AddLocation from "./pages/AddLocation";
 import ShowResult from "./pages/ShowResult";
 import {ToastContainer} from 'react-toastify';
+import ViewResult from "./pages/ViewResult";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path='/addlab' exact component={AddLab}/>
                 <Route path='/addloc' exact component={AddLocation}/>
                 <Route path='/testResult/:id' exact component={ShowResult}/>
+                <Route path='/viewResult/:id' exact component={ViewResult}/>
             </Switch>
 
             <ToastContainer/>

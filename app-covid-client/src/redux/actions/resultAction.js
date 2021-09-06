@@ -40,7 +40,7 @@ export const save = (v, history, edit) => (dispatch) => {
 }
 
 export const getResults = (page, search) => (dispatch) => {
-    axios.get(API_PATH + "patient?page=" + page + "&search=" + search)
+    axios.get(API_PATH + "patient?size=15&page=" + page + "&search=" + search)
         .then(res => {
             dispatch(updateState({
                 results: res.data.data.content,
