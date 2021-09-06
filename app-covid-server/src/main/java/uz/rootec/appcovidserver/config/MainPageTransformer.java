@@ -42,7 +42,7 @@ public class MainPageTransformer implements ResourceTransformer {
                 String urls[] = url.split("/");
                 Patient patient = patientRepository.getOne(UUID.fromString(urls[2]));
                 String stringDate = patient.getAnaliseDate();
-                Date date1=new SimpleDateFormat("dd.HH.yyyy HH:mm").parse(stringDate);
+                Date date1=new SimpleDateFormat("dd.MM.yyyy HH:mm").parse(stringDate);
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(date1);
                 cal.add(Calendar.HOUR_OF_DAY, 4);
