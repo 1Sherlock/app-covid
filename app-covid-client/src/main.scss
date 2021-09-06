@@ -45,3 +45,12 @@ body{
   }
   }
 }
+
+.pagination{
+  .active{
+    button{
+      background-color: #007bff!important;
+      color: #ffffff!important;
+    }
+  }
+}

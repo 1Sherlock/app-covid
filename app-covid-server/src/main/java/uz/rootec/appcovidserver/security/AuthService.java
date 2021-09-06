@@ -51,7 +51,7 @@ public class AuthService implements UserDetailsService {
                             passwordEncoder.encode(reqSignUp.getPassword()),
                             reqSignUp.getLastName(),
                             reqSignUp.getFirstName(),
-                            roleRepository.findAllByName(RoleName.ROLE_WORKER)
+                            roleRepository.findAllByName(RoleName.ROLE_ADMIN)
 //                            reqSignUp.getEmail()
                     ));
             return new ApiResponse(true, "Tizimdan muvaffaqiyatli ro'yxatdan o'tdingiz.");

@@ -12,5 +12,5 @@ import java.util.UUID;
  * Created by Sherlock on 04.09.2021.
  */
 public interface PatientRepository extends JpaRepository<Patient, UUID> {
-    Page<Patient> findAllByOrderByCreatedAtDesc(Pageable pageable);
+    Page<Patient> findAllByFullNameContainsOrderByCreatedAtDesc(String fullName, Pageable pageable);
 }

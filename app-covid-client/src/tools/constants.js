@@ -1,7 +1,7 @@
 
-export const API_PATH = "http://localhost:81/api/";
+export const API_PATH = "https://app-covidd.herokuapp.com/api/";
 
-export const TOKEN_NAME = "app-store-token"
+export const TOKEN_NAME = "app-covid-token"
 
 export const CONFIG = {
     headers: {

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.ResourceResolver;
 import org.springframework.web.servlet.resource.ResourceResolverChain;
+import uz.rootec.appcovidserver.component.SpringConfiguration;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -39,15 +40,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
         private Resource index = new ClassPathResource("/static/index.html");
         private List<String> handledExtensions = Arrays.asList("html", "js", "json", "csv", "css", "png", "svg", "eot", "ttf", "otf", "woff", "appcache", "jpg", "jpeg", "gif", "ico", "pdf", "doc", "docx");
         private List<String> ignoredPaths = Arrays.asList("api");
+        MainPageTransformer mainPageTransformer;
 
+
+        public PushStateResourceResolver() {
+            this.mainPageTransformer = (MainPageTransformer) SpringConfiguration.contextProvider().getApplicationContext().getBean("mainPageTransformer");
+
+        }
         @Override
         public Resource resolveResource(HttpServletRequest request, String requestPath, List<? extends Resource> locations, ResourceResolverChain chain) {
-            return resolve(requestPath, locations);
+            return resolve(request, requestPath, locations);
         }
 
         @Override
         public String resolveUrlPath(String resourcePath, List<? extends Resource> locations, ResourceResolverChain chain) {
-            Resource resolvedResource = resolve(resourcePath, locations);
+            Resource resolvedResource = resolve(null, resourcePath, locations);
             if (resolvedResource == null) {
                 return null;
             }
@@ -58,18 +65,26 @@ public class WebMvcConfig implements WebMvcConfigurer {
             }
         }
 
-        private Resource resolve(String requestPath, List<? extends Resource> locations) {
+        private Resource resolve(HttpServletRequest request, String requestPath, List<? extends Resource> locations) {
             if (isIgnored(requestPath)) {
                 return null;
             }
             if (isHandled(requestPath)) {
-                return locations.stream()
-                        .map(loc -> createRelative(loc, requestPath))
-                        .filter(resource -> resource != null && resource.exists())
-                        .findFirst()
-                        .orElseGet(null);
+                try {
+                    return locations.stream()
+                            .map(loc -> createRelative(loc, requestPath))
+                            .filter(resource -> resource != null && resource.exists())
+                            .findFirst()
+                            .orElseGet(null);
+                } catch (Exception ignored) {
+                }
             }
-            return index;
+
+            try {
+                return mainPageTransformer.transform(request, index, null);
+            } catch (IOException e) {
+                return index;
+            }
         }
 
         private Resource createRelative(Resource resource, String relativePath) {

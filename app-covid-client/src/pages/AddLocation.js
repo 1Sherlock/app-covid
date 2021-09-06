@@ -1,38 +1,39 @@
 import React from 'react';
 import Layout from "../components/Layout";
+import {connect} from "react-redux";
+import {save} from "../redux/actions/locationAction";
+import {AvField, AvForm} from "availity-reactstrap-validation"
 
-const AddLocation = () => {
+const AddLocation = (props) => {
+
     return (
         <Layout>
-            <div className="container">
+            <div className="container py-3">
                 <div className="row">
-                    <div className="col-md-4 offset-4">
-                        <form action="">
-                            <div className="card border-0">
-                                <div className="card-body">
-                                    <h4 className="text-uppercase">Добавить новое</h4>
+                    <div className="col-md-4 offset-md-4">
+                        <AvForm onValidSubmit={(e, v) => props.save(v, props.history)}>
+                            <h4 className="text-uppercase">Добавить новое</h4>
 
-                                    <div className="form-group">
-                                        <label htmlFor="id"> Названия на русском <span className="text-danger"> * </span></label>
-                                        <input type="text" className="form-control shadow-none" placeholder="Названия на русском" required
-                                               name="location-ru"/>
-                                    </div>
+                            <AvField type="text" className="shadow-none" placeholder="Названия на русском"
+                                     required
+                                     label={<>Названия на русском <span className="text-danger"> * </span></>}
+                                     name="nameRu"/>
 
-                                    <div className="form-group">
-                                        <label htmlFor="id"> Названия на английском<span className="text-danger"> * </span></label>
-                                        <input type="text" className="form-control shadow-none" placeholder="Названия на английском"
-                                               required name="location-en"/>
-                                    </div>
+                            <AvField type="text" className="shadow-none"
+                                     placeholder="Названия на английском"
+                                     required name="nameEn"
+                                     label={<>Названия на английском <span className="text-danger"> * </span></>}
+                            />
 
-                                    <div className="form-group">
-                                        <button className="btn btn-primary" name="enter-location" type="submit" id="send-to-location">Добавить</button>
-                                        <span className="text-danger"> *</span>
-                                        <small>- Ячейки, которые нужно заполнить!</small>
-                                    </div>
-
-                                </div>
+                            <div className="form-group">
+                                <button className="btn btn-primary" name="enter-location" type="submit"
+                                        id="send-to-location">Добавить
+                                </button>
+                                <span className="text-danger"> *</span>
+                                <small>- Ячейки, которые нужно заполнить!</small>
                             </div>
-                        </form>
+
+                        </AvForm>
                     </div>
                 </div>
             </div>
@@ -40,4 +41,11 @@ const AddLocation = () => {
     );
 };
 
-export default AddLocation;
+const mapStateToProps = (state) => {
+    return {
+        isLoading: state.location.isLoading,
+
+    }
+}
+
+export default connect(mapStateToProps, {save})(AddLocation);

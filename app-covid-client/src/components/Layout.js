@@ -34,17 +34,33 @@ const Layout = (props) => {
                 <nav className="navbar navbar-expand-md container navbar-light my-1">
                     <ul className="navbar-nav align-items-center">
                         <li className="nav-item">
-                            <Link to="/dashboard" className="text-decoration-none text-dark"><img src="/menu.png" alt="" className="mr-1"/> Пользователи</Link>
+                            <Link to="/dashboard" className={`nav-link ${props.location === "/dashboard" ? "text-primary" : "text-dark"} d-flex align-items-center`}>
+                                <svg viewBox="64 64 896 896" focusable="false" className="mr-2" data-icon="appstore"
+                                     width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"/>
+                                </svg>
+                                Пользователи</Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/laboratory" className="text-decoration-none text-dark px-md-5 px-0"><img
-                                src="/menu.png" alt="" className="mr-1"/> Лаборатория (название)</Link>
+                            <Link to="/laboratory" className={`nav-link ${props.location === "/laboratory" ? "text-primary" : "text-dark"} d-flex align-items-center px-md-5`}>
+                                <svg viewBox="64 64 896 896" focusable="false" className="mr-2" data-icon="appstore"
+                                     width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"/>
+                                </svg>
+                                Лаборатория (название)</Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/sampling" className="text-decoration-none text-dark"><img src="/menu.png" alt=""
-                                                                                                  className="mr-1"/> Место
+                            <Link to="/sampling" className={`nav-link ${props.location === "/sampling" ? "text-primary" : "text-dark"} d-flex align-items-center`}>
+                                <svg viewBox="64 64 896 896" focusable="false" className="mr-2" data-icon="appstore"
+                                     width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                                    <path
+                                        d="M464 144H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H212V212h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V160c0-8.8-7.2-16-16-16zm-52 268H612V212h200v200zM464 544H160c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H212V612h200v200zm452-268H560c-8.8 0-16 7.2-16 16v304c0 8.8 7.2 16 16 16h304c8.8 0 16-7.2 16-16V560c0-8.8-7.2-16-16-16zm-52 268H612V612h200v200z"/>
+                                </svg>
+                                Место
                                 забора анализа</Link>
                         </li>
                     </ul>

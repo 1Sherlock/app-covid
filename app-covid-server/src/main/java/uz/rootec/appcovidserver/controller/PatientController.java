@@ -55,6 +55,8 @@ public class PatientController {
 
             patientRepository.save(patient);
 
+
+
             if (reqPatient.getId() == null) {
                 return ResponseEntity.ok(new ApiResponse(true, "Сохранено"));
             } else {
@@ -66,8 +68,8 @@ public class PatientController {
     }
 
     @GetMapping
-    public HttpEntity<?> getAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
-        return ResponseEntity.ok(new ApiResponse(true, "", patientRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(page, size))));
+    public HttpEntity<?> getAll(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size, @RequestParam(defaultValue = "") String search) {
+        return ResponseEntity.ok(new ApiResponse(true, "", patientRepository.findAllByFullNameContainsOrderByCreatedAtDesc(search, PageRequest.of(page, size))));
     }
 
     @GetMapping("/{id}")
