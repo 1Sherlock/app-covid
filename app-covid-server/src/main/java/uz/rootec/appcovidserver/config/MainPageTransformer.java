@@ -50,9 +50,9 @@ public class MainPageTransformer implements ResourceTransformer {
                 DateFormat targetFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                 String format = targetFormat.format(date1);
                 String format1 = targetFormat.format(time);
-                html = html.replaceAll("<div id=\"root\"></div>", "<div style=\"width:970px !important;margin:0 auto !important;font-family: 'Roboto', sans-serif;\"\n" +
+                html = html.replaceAll("<div id=\"root\"></div>", "<div style=\"width:1024px !important;margin:0 auto !important;font-family: 'Roboto', sans-serif; background-image: url(img.png);    background-size: 100% 100%;background-repeat: no-repeat;     padding: 20px;    box-sizing: border-box;\"\n" +
                             "      data-new-gr-c-s-check-loaded=\"14.1027.0\" data-gr-ext-installed=\"\" cz-shortcut-listen=\"true\">" +
-                            "<table style=\"width:970px !important; margin-bottom:30px !important;margin-top:5px !important;font-family: 'Roboto', sans-serif;\">\n" +
+                            "<table style=\"width:100% !important; margin-bottom:30px !important;margin-top:5px !important;font-family: 'Roboto', sans-serif;\">\n" +
                             "    <tbody>\n" +
                             "    <tr>\n" +
                             "        <td style=\"width:375px !important;font-size:24px !important;text-align:center !important;padding-left:14px !important;padding-right:14px !important;font-family: 'Roboto', sans-serif;vertical-align: top;padding-top: 15px;\">\n" +
@@ -65,12 +65,12 @@ public class MainPageTransformer implements ResourceTransformer {
                             "    </tr>\n" +
                             "    </tbody>\n" +
                             "</table>\n" +
-                            "<div style=\"width:970px !important;font-size:24px !important;margin-left:13px !important;font-family: 'Roboto', sans-serif;\">\n" +
+                            "<div style=\"width:100% !important;font-size:24px !important;margin-left:13px !important; margin-right: 13px; box-sizing: border-box;font-family: 'Roboto', sans-serif;\">\n" +
                             "    <p>ID / Номер: <span id=\"serial\">"+ patient.getSerial() +"</span></p>\n" +
                             "    <p>Laboratory (name) / Лаборатория (название): <span id=\"laboratory\">"+ patient.getLaboratory().getNameEn() + " / " + patient.getLaboratory().getNameRu() +"</span></p>\n" +
                             "    <p>Place of sampling / Место забора анализа: <span id=\"place\">"+ patient.getPlace().getNameEn() + " / " + patient.getPlace().getNameRu() +"</span></p>\n" +
                             "    <p style=\"\">Research method / Метод исследования: <span id=\"method\">"+ patient.getMethodEn() + " / " + patient.getMethodRu() +"</span></p>\n" +
-                            "    <div style=\"display:block;width:100%;height:4px;border-bottom: 4px solid #9c9fa4;margin-bottom: 15px;margin-top: 5px;\"></div>\n" +
+                            "    <div style=\"display:block;width:97%;height:4px;border-bottom: 4px solid #9c9fa4;margin-bottom: 15px;margin-top: 5px; \"></div>\n" +
                             "    <p>Серия и номер паспорта: <span id=\"passport\">" + patient.getPassportNumber() +"</span></p>\n" +
                             "    <p>Full name / Полное имя: <span id=\"fullname\">" + patient.getFullName() +"</span></p>\n" +
                             "    <p>Birth date / Дата рождения: <span id=\"birthday\">" + patient.getBirthDate() + "</span></p>\n" +
