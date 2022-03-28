@@ -9,20 +9,21 @@ import AddLocation from "./pages/AddLocation";
 import ShowResult from "./pages/ShowResult";
 import {ToastContainer} from 'react-toastify';
 import ViewResult from "./pages/ViewResult";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact component={Login}/>
-                <Route path='/dashboard' exact component={Dashboard}/>
-                <Route path='/laboratory' exact component={Laboratory}/>
-                <Route path='/sampling' exact component={Sampling}/>
-                <Route path='/addresult' exact component={AddResult}/>
-                    <Route path='/addlab' exact component={AddLab}/>
-                <Route path='/addloc' exact component={AddLocation}/>
-                <Route path='/testResult/:id' exact component={ShowResult}/>
-                <Route path='/viewResult/:id' exact component={ViewResult}/>
+                <PrivateRoute role="admin" path='/dashboard' exact component={Dashboard}/>
+                <PrivateRoute role="admin" path='/laboratory' exact component={Laboratory}/>
+                <PrivateRoute role="admin" path='/sampling' exact component={Sampling}/>
+                <PrivateRoute role="admin" path='/addresult' exact component={AddResult}/>
+                <PrivateRoute role="admin" path='/addlab' exact component={AddLab}/>
+                <PrivateRoute role="admin" path='/addloc' exact component={AddLocation}/>
+                <PrivateRoute role="admin" path='/testResult/:id' exact component={ShowResult}/>
+                <Route role="admin" path='/viewResult/:id' exact component={ViewResult}/>
             </Switch>
 
             <ToastContainer/>

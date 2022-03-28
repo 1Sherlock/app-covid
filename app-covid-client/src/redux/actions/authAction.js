@@ -19,7 +19,17 @@ export const login = (values, history) => (dispatch) => {
         .then(async res => {
             if (res.data.accessToken) {
                 await localStorage.setItem(TOKEN_NAME, res.data.tokenType + " " + res.data.accessToken);
-                history.push("/dashboard");
+                axios.get(API_PATH + "user/me", {
+                    headers: {
+                        "Authorization":  res.data.tokenType + " " + res.data.accessToken
+                    }
+                })
+                    .then((res) => {
+                        const role = res.data.roles;
+                        role.filter(item => item.name === "ROLE_ADMIN").length > 0 ?
+                            window.location.href = "/dashboard" :
+                            window.location.href = "/"
+                    })
             }
             console.log(res);
         })

@@ -1,12 +1,14 @@
 package uz.rootec.appcovidserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import uz.rootec.appcovidserver.entity.User;
 import uz.rootec.appcovidserver.payload.ApiResponse;
 import uz.rootec.appcovidserver.payload.ReqSignUpWithRole;
+import uz.rootec.appcovidserver.payload.ReqUserChange;
 import uz.rootec.appcovidserver.payload.ResUser;
 import uz.rootec.appcovidserver.repository.RoleRepository;
 import uz.rootec.appcovidserver.repository.UserRepository;
@@ -82,6 +84,24 @@ public class UserController {
 //                                reqSignUp.getEmail()
                         ));
                 return ResponseEntity.ok(new ApiResponse(true, "Ishchi muvaffaqqiyatli saqlandi"));
+            }
+
+        } catch (Exception e){
+            return ResponseEntity.ok(new ApiResponse(false, e.getMessage()));
+        }
+    }
+
+    @PostMapping("/change")
+    public HttpEntity<?> change(@RequestBody ReqUserChange reqUserChange, @CurrentUser User user){
+        try {
+            if (passwordEncoder.matches( reqUserChange.getOldPassword(),user.getPassword())){
+                user.setPassword(passwordEncoder.encode(reqUserChange.getNewPassword()));
+                user.setPhoneNumber(reqUserChange.getNewLogin());
+                userRepository.save(user);
+
+                return ResponseEntity.ok(new ApiResponse(true, "O'zgartirildi"));
+            } else {
+                return ResponseEntity.ok(new ApiResponse(false, "Oldingi parol noto'g'ri kiritildi"));
             }
 
         } catch (Exception e){

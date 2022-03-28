@@ -80,7 +80,7 @@ const ViewResult = (props) => {
                                     {props.result?.place?.nameRu} / {props.result?.place?.nameEn}
                                 </td>
                                 <td className="text-center text-primary">
-                                    <a href={"https://webtopdf.expeditedaddons.com/?api_key=53YH4OUM7G8Q9BJI4NVF6CW590X0SDZT7L1KEA8R3621P2&content=https://app-covidd.herokuapp.com/sertificate/" + props.result?.id} target="_blank">
+                                    <a href={"https://webtopdf.expeditedaddons.com/?api_key=53YH4OUM7G8Q9BJI4NVF6CW590X0SDZT7L1KEA8R3621P2&content=https://app-covidd.herokuapp.com/sertificate/" + props.result?.id  + "&margin=0&html_width=1240"} target="_blank">
                                         <svg viewBox="64 64 896 896" focusable="false" className="" data-icon="file-pdf"
                                              width="1em" height="1em" fill="currentColor" aria-hidden="true">
                                             <path
